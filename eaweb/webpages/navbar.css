@@ -22,3 +22,9 @@ li a{
 .main_opening a{
     text-decoration: none; color: black;
 }
+.main_opening a{
+    color: green;
+}
+.main_opening a:hover{
+    color: lightgreen;
+}
