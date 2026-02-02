@@ -7,16 +7,27 @@
         <title>eaweb</title>
     </head>
     <body>
-        <nav class="navbar">
+        <header class="navbar">
             <div class="navdiv">
-                <div class="logo"><a href="main.html">Ethan Adams</a></div>
-                <ul>
-                    <li><a href="about_me.html">About Me</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="work_experience.html">Work Experience</a></li>
-                </ul>
+                <a class="logo" href="index.html">Blank Page</a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+                    <span class="menu-toggle__bar"></span>
+                    <span class="menu-toggle__bar"></span>
+                    <span class="menu-toggle__bar"></span>
+                </button>
+                <nav class="menu" id="site-menu">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
             </div>
-        </nav>
+        </header>
+        <main class="page" id="home">
+            <section class="page__blank">
+                <h1>Blank Webpage</h1>
+                <p>This page is intentionally minimal.</p>
+            </section>
+        </main>
         <script src="index.js"></script>
     </body>
 </html>
