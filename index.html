@@ -1,41 +1,199 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial scale=1">
-        <title>eaweb</title>
-        <style type="text/css">
-            *{
-                text-decoration: none;
-            }
-            .navbar{
-                background: #091911; font-family: calibri; padding-right: 15px; padding-left: 15px;
-            }
-            .navdiv{
-                display: flex; align-items: center; justify-content: space-between;
-            }
-            .logo{
-                font-size: 35px; font-weight: 600; color: white;
-            }
-            li{
-                list-style: none; display: inline-block;
-            }
-            li a{
-                color: white; font-size: 18px; font-weight: bold; margin-right: 25px;
-            }
-        </style>
-    </head>
-    <body>
-        <nav class="navbar">
-            <div class="navdiv">
-                <div class="logo"><a href="#">Ethan Adams</a></div>
-                <ul>
-                    <li><a href="#">About Me</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Work Experience</a></li>
-                </ul>
-            </div>
-        </nav>
-    </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>eaweb</title>
 
+  <!-- Icons & Styles-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="grain" aria-hidden="true"></div>
+    <header>
+        <div class="topbar">
+            <div class="brand">
+                <div class="logo" aria-hidden="true"></div>
+                <div><h1>Ethan Adams</h1></div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <button class="cmdHint" id="openPaletteBtn" type="button" title="Open Command Palette">
+                <b>Command</b>
+                <span class="kbd">
+                <span class="keycap" id="modKey">Ctrl</span>
+                <span class="keycap">K</span>
+                </span>
+            </button>
+
+            <button class="cmdHint" id="themeToggleBtn" type="button" title="Toggle theme">
+                <b id="themeLabel">Light</b>
+                <span class="kbd">
+                    <span class="keycap">T</span>
+                </span>
+            </button>
+
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+        <div class="heroContent">
+            <h2 class="heroTitle">Welcome to eaweb!</h2>
+            <p class="heroSub">
+            Use the dock below, or hit <b>Ctrl/Cmd + K</b> for the command palette.
+            This is designed as a starting shell — swap section content later.
+            </p>
+        </div>
+        </section>
+
+        <section class="pageWrap" aria-label="Page content">
+            <div class="pageHeader">
+                <div class="crumbs" id="crumbs">Home</div>
+                <div class="pill"><span class="dot" aria-hidden="true"></span><span id="statusPill">Ready</span></div>
+            </div>
+
+            <div class="page" id="page">
+                <!-- Tabs (blank-ish) -->
+                <article class="view active" id="view-home" data-title="Home">
+                    <h2>Home</h2>
+                    <p>See recent editions to the website, news, and more.</p>
+                    <div class="grid">
+                        <section class="card">
+                            <div class="cardTop">
+                                <h3 class="cardTitle">Web Architecture Diagram</h3>
+                                <span class="chip">Widget</span>
+                            </div>
+                            <p class="cardText">The web architecture diagram for GitHub-based websites 
+                                can be viewed in the Notes tab.</p>
+                            <div class="cardActions">
+                                <button 
+                                class="btn" 
+                                id="viewDiagramBtn" 
+                                type="button"
+                                onclick="goToNotesArch()">View</button>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+
+                <article class="view" id="view-projects" data-title="Projects">
+                    <h2>Projects</h2>
+                    <p>Drop your projects content here.</p>
+                    <div class="blankArea">Blank area — maybe a grid of project cards.</div>
+                </article>
+
+                <article class="view" id="view-notes" data-title="Notes">
+                    <h2>Notes</h2>
+                    <p>Drop your notes content here.</p>
+
+                    <div class="grid">
+                        <section class="card" id="arch-diagram">
+                            <div class="cardTop">
+                                <h3 class="cardTitle">Website Architecture</h3>
+                                <span class="chip">Diagram</span>
+                            </div>
+
+                            <img 
+                            src="web-arch-diagram.png" 
+                            class="cardImage" 
+                            alt="system architecture diagram for GitHub-based website">
+
+                            </p class="cardText">This is a diagram for system architecture 
+                            for GitHub-based website</p>
+                        </section>
+                    </div>
+
+                </article>
+
+                <article class="view" id="view-analytics" data-title="Analytics">
+                    <h2>Analytics</h2>
+                    <p>Drop charts and summaries here.</p>
+                    <div class="blankArea">Blank area — connect to your data later.</div>
+                </article>
+
+                <article class="view" id="view-settings" data-title="Settings">
+                    <h2>Settings</h2>
+                    <p>Drop settings toggles here.</p>
+                    <div class="blankArea">Blank area — theme, profile, preferences, etc.</div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dock navigation -->
+    <nav class="dock" aria-label="Dock navigation">
+        <button class="dockBtn active" data-target="home" type="button">
+            <div class="tip">Home</div>
+            <img 
+            class="dockIcon"
+            src="Icons/home_light2.png">
+            <div class="dockLabel">Home</div>
+        </button>
+
+        <button class="dockBtn" data-target="projects" type="button">
+            <div class="tip">Projects</div>
+            <img 
+            class="dockIcon"
+            src="Icons/projects_light.png">
+            <div class="dockLabel">Projects</div>
+        </button>
+
+        <button class="dockBtn" data-target="notes" type="button">
+            <div class="tip">Notes</div>
+            <img 
+            class="dockIcon"
+            src="Icons/notes_light.png">
+            <div class="dockLabel">Notes</div>
+        </button>
+
+        <button class="dockBtn" data-target="analytics" type="button">
+            <div class="tip">Analytics</div>
+                <img 
+                class="dockIcon"
+                src="Icons/analytics_light.png">
+            <div class="dockLabel">Analytics</div>
+        </button>
+
+        <button class="dockBtn" data-target="settings" type="button">
+            <div class="tip">Settings</div>
+            <div class="dockIcon">
+                <img 
+                class="dockIcon"
+                src="Icons/settings_light.png">
+            </div>
+            
+            <div class="dockLabel">Settings</div>
+        </button>
+    </nav>
+
+    <!-- Command Palette -->
+    <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="palette" role="document">
+            <div class="palTop">
+                <div class="searchIcon">⌘</div>
+                <input class="palInput" id="palInput" type="text" placeholder="Type to search… (e.g., “settings”, “notes”)" autocomplete="off" />
+            </div>
+
+            <div class="palList" id="palList">
+                <!-- populated by JS -->
+            </div>
+
+            <div class="palFooter">
+                <div class="keys">
+                <span class="keycap">↑</span><span class="keycap">↓</span> to move
+                <span class="keycap">Enter</span> to open
+                <span class="keycap">Esc</span> to close
+                </div>
+                <div id="palCount">5 commands</div>
+            </div>
+        </div>
+    </div>
+    <script src="behaviors.js"></script>
+</body>
 </html>
