@@ -179,13 +179,6 @@ overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closePalette();
 });
 
-// Tiny touch: update title on view changes
-const originalTitle = document.title;
-function syncDocTitle(){
-    const key = (location.hash || "#home").slice(1);
-    const title = (views[key] && views[key].dataset.title) ? views[key].dataset.title : "Home";
-    document.title = `${title} — Blank Site`;
-}
 window.addEventListener("hashchange", syncDocTitle);
 syncDocTitle();
 
