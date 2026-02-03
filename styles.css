@@ -406,7 +406,7 @@
       bottom: 18px;
       transform: translateX(-50%);
       z-index: 20;
-      width: min(720px, calc(100vw - 24px));
+      width: min(520px, calc(100vw - 24px));
       padding: 10px;
       border-radius: 22px;
       background: rgba(255,255,255,.07);
@@ -414,7 +414,7 @@
       backdrop-filter: blur(16px);
       box-shadow: 0 22px 70px rgba(0,0,0,.55);
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
     }
     .dockBtn{

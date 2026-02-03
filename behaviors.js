@@ -10,8 +10,6 @@ const views = {
     home: $("#view-home"),
     projects: $("#view-projects"),
     notes: $("#view-notes"),
-    analytics: $("#view-analytics"),
-    settings: $("#view-settings"),
 };
 
 const dockButtons = $$(".dockBtn");
@@ -62,8 +60,6 @@ const commands = [
     { key: "home", label: "Home", hint: "Go to home view", icon: "H" },
     { key: "projects", label: "Projects", hint: "Your work area", icon: "P" },
     { key: "notes", label: "Notes", hint: "Scratchpad / notes", icon: "N" },
-    { key: "analytics", label: "Analytics", hint: "Insights & charts", icon: "A" },
-    { key: "settings", label: "Settings", hint: "Preferences", icon: "S" },
 ];
 
 let filtered = [...commands];
@@ -179,6 +175,13 @@ overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closePalette();
 });
 
+// Tiny touch: update title on view changes
+const originalTitle = document.title;
+function syncDocTitle(){
+    const key = (location.hash || "#home").slice(1);
+    const title = (views[key] && views[key].dataset.title) ? views[key].dataset.title : "Home";
+    document.title = `${title}`;
+}
 window.addEventListener("hashchange", syncDocTitle);
 syncDocTitle();
 
